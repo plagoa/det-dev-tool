@@ -1,0 +1,54 @@
+{
+  "build_version": "7.0-SNAPSHOT",
+  "pdi_host": "localhost",
+  "pdi_port": 9052,
+  "projects": {
+    "pentaho-det": "{DET_PATH}",
+    "common-ui": "{COMMON_UI_PATH}",
+    "poc": "{POC_PATH}"
+  },
+  "resources": [
+    {
+      "match": "pentaho-det-core",
+      "project": "pentaho-det",
+      "path": "/Implementation/Core/src/main/resources/web/",
+      "slice": 3
+    },
+    {
+      "match": "pentaho-det-data-explorer-module",
+      "project": "pentaho-det",
+      "path": "/Implementation/data-explorer-module/src/main/resources/web/",
+      "slice": 3
+    },
+    {
+      "match": "common-ui",
+      "project": "common-ui",
+      "path": "/package-res/",
+      "slice": 3
+    },
+    {
+      "match": "poc",
+      "project": "poc",
+      "path": "",
+      "slice": 0
+    },
+    {
+      "match": "scripts",
+      "project": "poc",
+      "path": "",
+      "slice": 0
+    }
+  ],
+  "routes": [
+    {
+      "match": "/",
+      "redirect": "/pentaho-det-core/7.0-SNAPSHOT/index.html"
+    },
+    {
+      "match": "/poc",
+      "send": "/index.html",
+      "project": "poc"
+    }
+  ],
+  "mock_data": "false"
+}
