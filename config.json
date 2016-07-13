@@ -1,54 +1,31 @@
 {
-  "build_version": "7.0-SNAPSHOT",
-  "pdi_host": "localhost",
-  "pdi_port": 9052,
-  "projects": {
-    "pentaho-det": "{DET_PATH}",
-    "common-ui": "{COMMON_UI_PATH}",
-    "poc": "{POC_PATH}"
-  },
+  "host": "localhost",
+  "port": 9051,
   "resources": [
     {
       "match": "pentaho-det-core",
-      "project": "pentaho-det",
-      "path": "/Implementation/Core/src/main/resources/web/",
-      "slice": 3
+      "project": "/Users/franciscoguilherme/Dropbox/Xico/Pentaho/Dev/pentaho-det-ee",
+      "path": "/Implementation/Core/src/main/resources/web/"
     },
     {
       "match": "pentaho-det-data-explorer-module",
-      "project": "pentaho-det",
-      "path": "/Implementation/data-explorer-module/src/main/resources/web/",
-      "slice": 3
+      "project": "/Users/franciscoguilherme/Dropbox/Xico/Pentaho/Dev/pentaho-det-ee",
+      "path": "/Implementation/data-explorer-module/src/main/resources/web/"
+    },
+    {
+      "match": "pentaho-det-impl-core",
+      "project": "/Users/franciscoguilherme/Dropbox/Xico/Pentaho/Dev/pentaho-det",
+      "path": "/impl/core/src/main/javascript/web/"
+    },
+    {
+      "match": "pentaho-flat-table-viz-impl",
+      "project": "/Users/franciscoguilherme/Dropbox/Xico/Pentaho/Dev/pentaho-osgi-bundles/pentaho-flat-table-viz",
+      "path": "/impl/src/main/javascript/web/"
     },
     {
       "match": "common-ui",
-      "project": "common-ui",
-      "path": "/package-res/",
-      "slice": 3
-    },
-    {
-      "match": "poc",
-      "project": "poc",
-      "path": "",
-      "slice": 0
-    },
-    {
-      "match": "scripts",
-      "project": "poc",
-      "path": "",
-      "slice": 0
+      "project": "/Users/franciscoguilherme/Dropbox/Xico/Pentaho/Dev/pentaho-platform-plugin-common-ui",
+      "path": "/package-res/"
     }
-  ],
-  "routes": [
-    {
-      "match": "/",
-      "redirect": "/pentaho-det-core/7.0-SNAPSHOT/index.html"
-    },
-    {
-      "match": "/poc",
-      "send": "/index.html",
-      "project": "poc"
-    }
-  ],
-  "mock_data": "false"
+  ]
 }

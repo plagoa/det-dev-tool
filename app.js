@@ -7,7 +7,7 @@ var proxy     = require('./proxy');
 var app       = express();
 
 var port      = process.env.PORT || 3000;
-var baseUrl   = 'http://' + config.pdi_host + ':' + config.pdi_port;
+var baseUrl   = 'http://' + config.host + ':' + config.port;
 
 app.get("/*", function(req, res){
 
@@ -37,7 +37,7 @@ function load(data, req, res) {
     return;
   }
 
-  console.log("SRC::", src);
+  console.log("URL    - ", src);
 
   request({
     url: baseUrl + src,
