@@ -11,39 +11,31 @@ var baseUrl   = 'http://' + config.host + ':' + config.port;
 
 app.get("/*", function(req, res){
 
-  var data = proxy.parsePath(req, res);
-  if(data) load(data, req, res);
+  var file = proxy.parseURL(req.url);
+  load(file, res);
 })
 
 app.listen(port, function(){
   console.log('App listening on port ' + port + '!');
 });
 
+function load(file, res) {
 
-function load(data, req, res) {
+  res.setHeader('content-type', mime.lookup(file.src));
 
-  var type = data.hasOwnProperty('type') ? data.type : null;
-  var src = data.hasOwnProperty('src') ? data.src : data;
-
-  if (type && type == 'content') {
-    res.send(src);
-    return;
+  if (file.type == 'fs') {
+    res.send(fs.readFileSync(file.src));
+    console.log("PROXY  -", file.src);
   }
 
-  res.setHeader('content-type', mime.lookup(src));
-
-  if (type && type == 'file') {
-    res.send(fs.readFileSync(src));
-    return;
+  if (file.type == 'url') {
+    request({
+      url: baseUrl + file.src,
+      method: 'GET',
+    }, function (err, response, body) {
+      if(err) return console.log(err);
+      res.send(body);
+    })
+    console.log("URL    -", baseUrl + file.src);
   }
-
-  console.log("URL    - ", src);
-
-  request({
-    url: baseUrl + src,
-    method: 'GET',
-  }, function (err, response, body) {
-    if(err) return console.log(err);
-    res.send(body);
-  })
 }
