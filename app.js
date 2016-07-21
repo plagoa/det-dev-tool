@@ -2,6 +2,7 @@ var express   = require('express');
 var request   = require('request');
 var fs        = require('fs');
 var mime      = require('mime-types');
+var colors    = require('colors');
 var config    = require('./config.json');
 var proxy     = require('./proxy');
 var app       = express();
@@ -25,7 +26,7 @@ function load(file, res) {
 
   if (file.type == 'fs') {
     res.send(fs.readFileSync(file.src));
-    console.log("PROXY  -", file.src);
+    console.log(colors.green("PROXY  >", file.src));
   }
 
   if (file.type == 'url') {
@@ -36,6 +37,6 @@ function load(file, res) {
       if(err) return console.log(err);
       res.send(body);
     })
-    console.log("URL    -", baseUrl + file.src);
+    console.log(colors.cyan("URL    >", baseUrl + file.src));
   }
 }
