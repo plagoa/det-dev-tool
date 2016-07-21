@@ -3,29 +3,14 @@
   "port": 9051,
   "resources": [
     {
-      "match": "pentaho-det-core",
-      "project": "/Users/franciscoguilherme/Dropbox/Xico/Pentaho/Dev/pentaho-det-ee",
-      "path": "/Implementation/Core/src/main/resources/web/"
+      "match": "{url-match-string}",
+      "project": "{local-absolute-path}",
+      "path": "{project-resource-path}"
     },
     {
       "match": "pentaho-det-data-explorer-module",
-      "project": "/Users/franciscoguilherme/Dropbox/Xico/Pentaho/Dev/pentaho-det-ee",
+      "project": "/pentaho-det-ee",
       "path": "/Implementation/data-explorer-module/src/main/resources/web/"
-    },
-    {
-      "match": "pentaho-det-impl-core",
-      "project": "/Users/franciscoguilherme/Dropbox/Xico/Pentaho/Dev/pentaho-det",
-      "path": "/impl/core/src/main/javascript/web/"
-    },
-    {
-      "match": "pentaho-flat-table-viz-impl",
-      "project": "/Users/franciscoguilherme/Dropbox/Xico/Pentaho/Dev/pentaho-osgi-bundles/pentaho-flat-table-viz",
-      "path": "/impl/src/main/javascript/web/"
-    },
-    {
-      "match": "common-ui",
-      "project": "/Users/franciscoguilherme/Dropbox/Xico/Pentaho/Dev/pentaho-platform-plugin-common-ui",
-      "path": "/package-res/"
     }
   ]
 }
