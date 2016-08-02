@@ -4,6 +4,8 @@ var fs        = require('fs');
 var mime      = require('mime-types');
 var config    = require('./config.json');
 
+var exceptions = [/index.html/, /\.(jpe?g|png|gif|bmp|svg)$/i]
+
 module.exports = {
   parseURL: parseURL
 }
@@ -15,7 +17,12 @@ function parseURL(url) {
 
   _.each(config.resources, function(resource){
 
-    if(url.match(resource.match) && !url.match(/index.html/)) {
+    var isException = false;
+    _.each(exceptions, function(exception){
+      if(url.match(exception)) isException = true;
+    })
+
+    if(url.match(resource.match) && !isException) {
       file = {src: resource.project + resource.path + path, type: 'fs'};
     }
   });
