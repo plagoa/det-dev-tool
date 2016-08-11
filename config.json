@@ -4,12 +4,12 @@
   "resources": [
     {
       "match": "pentaho-det-ee-impl-pdi",
-      "target": "/Users/franciscoguilherme/Dropbox/Xico/Pentaho/Dev/pentaho-det-ee",
+      "target": "{ RESOURCE_ABSOLUT_PATH }",
       "path": "/impl/pdi/src/main/javascript/app/"
     },
     {
       "match": "pentaho-det-impl-core",
-      "target": "/Users/franciscoguilherme/Dropbox/Xico/Pentaho/Dev/pentaho-det",
+      "target": "{ RESOURCE_ABSOLUT_PATH }",
       "path": "/impl/core/src/main/javascript/app/"
     }
   ]
