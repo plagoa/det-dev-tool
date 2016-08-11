@@ -13,19 +13,8 @@ var client      = new Client();
 
 
 module.exports = {
-  proxyRequest: proxyRequest
-}
-
-function proxyRequest(req, res) {
-
-  switch (req.method) {
-    case "POST":
-      post(req, res);
-      break;
-    case "GET":
-      get(req, res);
-      break;
-  }
+  get: get,
+  post: post
 }
 
 function post(req, res) {
@@ -60,21 +49,12 @@ function matchURL(url) {
 
   _.each(config.resources, function(resource){
 
-    if(url.match(resource.match) && !isException(mURL)) {
+    var isException = _.find(exceptions, function(exception){ return url.match(exception); });
+
+    if(url.match(resource.match) && !isException) {
       mURL = resource.target + resource.path + url.split('/').slice(3, this.length).join('/');
     }
   });
 
   return mURL;
-}
-
-function isException(url) {
-
-  var isException;
-
-  _.each(exceptions, function(exception){
-    if(url.match(exception)) isException = true;
-  })
-
-  return isException;
 }
