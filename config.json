@@ -3,14 +3,14 @@
   "port": 9051,
   "resources": [
     {
-      "match": "{url-match-string}",
-      "project": "{local-absolute-path}",
-      "path": "{project-resource-path}"
+      "match": "pentaho-det-ee-impl-pdi",
+      "target": "/Users/franciscoguilherme/Dropbox/Xico/Pentaho/Dev/pentaho-det-ee",
+      "path": "/impl/pdi/src/main/javascript/app/"
     },
     {
-      "match": "pentaho-det-data-explorer-module",
-      "project": "/pentaho-det-ee",
-      "path": "/Implementation/data-explorer-module/src/main/resources/web/"
+      "match": "pentaho-det-impl-core",
+      "target": "/Users/franciscoguilherme/Dropbox/Xico/Pentaho/Dev/pentaho-det",
+      "path": "/impl/core/src/main/javascript/app/"
     }
   ]
 }

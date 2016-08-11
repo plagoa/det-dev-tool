@@ -9,12 +9,15 @@
   "author": "Francisco Guilherme <fguilherme@pentaho.com>",
   "license": "MIT",
   "dependencies": {
+    "body-parser": "^1.15.2",
     "express": "^4.13.4",
+    "node-rest-client": "^2.0.1",
     "request": "^2.72.0"
   },
   "devDependencies": {
     "colors": "^1.1.2",
     "express-livereload": "0.0.24",
+    "http-post": "^0.1.1",
     "junk": "^1.0.2",
     "mime-types": "^2.1.11",
     "nodemon": "^1.9.2",
