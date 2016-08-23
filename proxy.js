@@ -7,7 +7,7 @@ var colors      = require('colors');
 var Client      = require('node-rest-client').Client;
 
 var config      = require('./config.json');
-var exceptions  = [/index.html/, /\.(jpe?g|png|gif|bmp|svg)$/i];
+var exceptions  = [/index.html/];
 var baseURL     = 'http://' + config.host + ':' + config.port;
 var client      = new Client();
 
@@ -35,11 +35,23 @@ function get(req, res) {
   res.setHeader('content-type', mime.lookup(url));
 
   if (url.match(/http/)) {
+    doRequest(req, res, url);
+  } else {
+    if(fs.existsSync(url)) {
+      console.log(colors.green("PROXY  >", url));
+      res.send(fs.readFileSync(url));
+    } else {
+      doRequest(req, res, baseURL + req.url);
+    }
+  }
+}
+
+function doRequest(req, res, url) {
+  try {
     console.log(colors.cyan("URL    >", url));
     req.pipe(request(url)).pipe(res);
-  } else {
-    console.log(colors.green("PROXY  >", url));
-    res.send(fs.readFileSync(url));
+  } catch (err) {
+    console.log(colors.red("ERR    >", err));
   }
 }
 
