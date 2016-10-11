@@ -19,3 +19,7 @@ app.get("/*", function(req, res){
 app.post("/*", function(req, res){
   proxy.post(req, res);
 })
+
+app.delete("/*", function(req, res){
+  proxy.delete(req, res);
+})
