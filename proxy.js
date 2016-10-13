@@ -14,7 +14,8 @@ var client      = new Client();
 
 module.exports = {
   get: get,
-  post: post
+  post: post,
+  delete: del
 }
 
 function post(req, res) {
@@ -24,6 +25,16 @@ function post(req, res) {
     headers: { "Content-Type": "application/json" }
   }, function (data, response) {
     console.log(colors.yellow("POST   >", req.url));
+    res.send(data);
+  });
+}
+
+function del(req, res) {
+
+  client.delete(baseURL + req.url, {
+    headers: { "Content-Type": "application/json" }
+  }, function (data, response) {
+    console.log(colors.red("DELETE   >", req.url));
     res.send(data);
   });
 }

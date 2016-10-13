@@ -3,14 +3,24 @@
   "port": 9051,
   "resources": [
     {
-      "match": "pentaho-det-ee-impl-pdi",
-      "target": "{ RESOURCE_ABSOLUT_PATH }",
+      "match": "pentaho-det-ee-impl-pdi/7.0",
+      "target": "C:/GitHub/pentaho-det-ee",
       "path": "/impl/pdi/src/main/javascript/app/"
     },
     {
-      "match": "pentaho-det-impl-core",
-      "target": "{ RESOURCE_ABSOLUT_PATH }",
+      "match": "pentaho-det-impl-core/7.0",
+      "target": "C:/GitHub/pentaho-det",
       "path": "/impl/core/src/main/javascript/app/"
+    },
+    {
+      "match": "pentaho-flat-table-viz-impl/7.0",
+      "target": "C:/GitHub/pentaho-det",
+      "path": "/plugins/pentaho-flat-table-viz/impl/src/main/javascript/web/"
+    },
+    {
+      "match": "common-ui",
+      "target": "C:/GitHub/pentaho-platform-plugin-common-ui",
+      "path": "/package-res/"
     }
   ]
 }
