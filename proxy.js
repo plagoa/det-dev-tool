@@ -7,9 +7,12 @@ var colors      = require('colors');
 var Client      = require('node-rest-client').Client;
 
 var config      = require('./config.json');
-var exceptions  = [/index.html/];
+
 var baseURL     = 'http://' + config.host + ':' + config.port;
 var client      = new Client();
+
+var urlExceptions       = config.exceptions.url;
+var resourceExceptions  = config.exceptions.resources;
 
 
 module.exports = {
@@ -68,13 +71,16 @@ function doRequest(req, res, url) {
 
 function matchURL(url) {
 
+  var isResourceException = _.find(resourceExceptions, function(exception){ if(url.match(/exception.match/)) return exception; });
+  if(isResourceException) url = isResourceException.src;
+
   var mURL = baseURL + url;
 
   _.each(config.resources, function(resource){
 
-    var isException = _.find(exceptions, function(exception){ return url.match(exception); });
+    var isURLException = _.find(urlExceptions, function(exception){ return url.match(/exception/); });
 
-    if(url.match(resource.match) && !isException) {
+    if(url.match(resource.match) && !isURLException) {
       mURL = resource.target + resource.path + url.split('/').slice(3, this.length).join('/');
     }
   });
